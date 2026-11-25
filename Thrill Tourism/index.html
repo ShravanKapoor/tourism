@@ -4,134 +4,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
         integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
     <title>Thrill Tourism</title>
 </head>
 
-<body>
-    <main class="bg-light">
-        <nav class="navbar navbar-expand-lg navbar-fixed-top mx-5">
+<body class="bg-light" id="top">
+    <header class="sticky-top shadow-sm" id="siteHeader">
+        <nav class="navbar bg-light px-3 px-md-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="image.jpg" alt="Thrill Tourism" width="118" height="24" class="mx-3 align-text-top">
+                <a class="navbar-brand" href="#top">
+                    <img src="image.jpg" alt="Thrill Tourism" width="118" height="24">
                 </a>
-                <div class="row">
-                    <div class=" col-md-12  text-right">
-                        <button type="button" class="btn row-lg-12 row-md-8 row-sm-6 row-4  btn-primary">Near me</button>
-                        <button type="button" class="btn row-lg-12 row-md-8 row-sm-6 row-4  btn-primary">Add a listing</button>
-                    </div>
+                <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-primary js-near-me" aria-label="Near me">
+                        <i class="bi bi-cursor-fill"></i><span class="d-none d-sm-inline"> Near me</span>
+                    </button>
+                    <a href="#list-your-service" class="btn btn-outline-primary" aria-label="Add a listing">
+                        <i class="bi bi-plus-lg"></i><span class="d-none d-sm-inline"> Add a listing</span>
+                    </a>
                 </div>
             </div>
         </nav>
-        <nav class="navbar navbar-expand-lg bg-white ">
+        <nav class="navbar navbar-expand-lg bg-white px-3 px-md-5" aria-label="Main">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    data-bs-target="#mainNav" aria-controls="mainNav"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav fw-bold me-auto m-3 mx-5 mb-2 mb-lg-0 text-secondary">
-                        <li class="nav-item">
-                            <i class="bi mx-4 bi-house-door">Home</i>
-                        </li>
-                         <li class="nav-item">
-                        <i class="bi mx-4 bi-list">All Listings</i>
-                    </li>
-                    <li class="nav-item">
-                        <i class="bi mx-4">Blogs</i>
-                    </li>
-                    <li class="nav-item">
-                        <i class="bi mx-4">Contact Us</i>
-                    </li>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav fw-bold gap-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="#top"><i class="bi bi-house-door"></i> Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#listings"><i class="bi bi-list"></i> All Listings</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#listings"><i class="bi bi-journal-text"></i> Blogs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-envelope"></i> Contact Us</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <section class="d-flex justify-content-center mt-5 google-map  ">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14001.635429696998!2d77.18302375!3d28.6774138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1690654035422!5m2!1sen!2sin"
-                width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </header>
+
+    <main>
+        <section class="container mt-4 google-map" id="map" aria-label="Map">
+            <div class="ratio ratio-21x9 rounded-4 overflow-hidden shadow-sm map-frame">
+                <iframe id="mapFrame" title="Map"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14001.635429696998!2d77.18302375!3d28.6774138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1690654035422!5m2!1sen!2sin"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p class="text-center text-secondary small mt-2 mb-0" id="mapCaption" aria-live="polite">
+                Pick a place below to see it on the map.
+            </p>
         </section>
-        <div class="text-center mt-3">
-            <button type="button" class="btn btn-primary">Near me</button>
-        </div>
-        <div class="container">
-            <div class="cards row row-cols-2 row-cols-lg-5 d-flex justify-content-center gap-2 m-5 ">
-                <div class="card  data p-3 g-col-6 border border-primary" style="width: 18rem;">
-                    <img src="images/green-valley.jpg" class="card-img-top" alt="Green valley between grassy mountains" loading="lazy">
-                    <div class="card-body">
-                        <h5 class="card-title fst-italic text-secondary">Blog</h5>
-                        <p class="card-text fw-bolder">Kasauli Trip FAQs</p>
-                        <a class="icon-link text-decoration-none icon-link-hover d-md-flex justify-content-md-end"
-                            href="#">
-                            <i class="bi bi-geo-alt mb-1"></i>
-                            Solan
-                        </a>
-                    </div>
+
+        <section class="container my-5" id="listings" aria-labelledby="listingsHeading">
+            <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-3">
+                <div>
+                    <h2 class="fw-bold mb-1" id="listingsHeading">Explore places</h2>
+                    <p class="text-secondary mb-0" id="resultCount" aria-live="polite"></p>
                 </div>
-                <div class="card  data p-3 g-col-6 border border-primary" style="width: 18rem;">
-                    <img src="images/living-room.jpg" class="card-img-top" alt="Bright, modern living room" loading="lazy">
-                    <div class="card-body">
-                        <h5 class="card-title fst-italic text-secondary">Blog</h5>
-                        <p class="card-text fw-bolder">Sagar Thakur Dhaba</p>
-                        <a class="icon-link text-decoration-none icon-link-hover d-md-flex justify-content-md-end"
-                            href="#">
-                            <i class="bi bi-geo-alt mb-1"></i>
-                            Manali
-                        </a>
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                    <div class="input-group search-box">
+                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                        <input type="search" class="form-control" id="search" placeholder="Search places or cities"
+                            aria-label="Search places or cities">
                     </div>
-                </div>
-                <div class="card   data p-3 g-col-6 border border-primary" style="width: 18rem;">
-                    <img src="images/mountain-hut.jpg" class="card-img-top" alt="Wooden hut on a hillside meadow" loading="lazy">
-                    <div class="card-body">
-                        <h5 class="card-title fst-italic text-secondary">Blog</h5>
-                        <p class="card-text fw-bolder">Siswan Dam</p>
-                        <a class="icon-link text-decoration-none icon-link-hover d-md-flex justify-content-md-end"
-                            href="#">
-                            <i class="bi bi-geo-alt mb-1"></i>
-                            Chandigarh
-                        </a>
-                    </div>
-                </div>
-                <div class="card data   p-3 g-col-6 border border-primary" style="width: 18rem;">
-                    <img src="images/green-valley.jpg" class="card-img-top" alt="Green valley between grassy mountains" loading="lazy">
-                    <div class="card-body">
-                        <h5 class="card-title fst-italic text-secondary">Blog</h5>
-                        <p class="card-text fw-bolder">Hidden Waterfall Trek</p>
-                        <a class="icon-link text-decoration-none icon-link-hover d-md-flex justify-content-md-end"
-                            href="#">
-                            <i class="bi bi-geo-alt mb-1"></i>
-                            Shimla
-                        </a>
-                    </div>
+                    <button type="button" class="btn btn-primary js-near-me">
+                        <i class="bi bi-cursor-fill"></i> Near me
+                    </button>
                 </div>
             </div>
-        </div>
-        <div class="card m-5 p-5 text-center">
-            <div class="card-body">
-                <h5 class="card-title fw-bolder fs-2 ">List your tourism services for free</h5>
-                <p class="card-text mt-4 fw-bold fs-5">Thrill tourism is an online platform that enables tourists to
-                    directly connect with hosts, without any commission fees.</p>
-                <a href="#" class="btn btn-primary p-2 mt-4">Publish your ad for free</a>
+
+            <div class="d-flex flex-wrap gap-2 mb-4" id="filters" role="group" aria-label="Filter by place"></div>
+
+            <p class="alert alert-warning d-none" id="locationMessage" role="status"></p>
+
+            <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4" id="cards"></div>
+
+            <div class="text-center text-secondary py-5 d-none" id="emptyState">
+                <i class="bi bi-binoculars fs-1"></i>
+                <p class="mt-2 mb-3">No places match your search.</p>
+                <button type="button" class="btn btn-outline-primary" id="clearFilters">Clear filters</button>
             </div>
-        </div>
-        <footer class="bg-white pt-5 pb-4">
-            <div class="d-flex">
-                <p class="mx-5">2023 <i class="bi bi-c-circle"></i> thrilltourism.com | Privacy Policy | Terms and
-                    Conditions | Pricing</p>
-                <p class="text-danger m-auto">Beta version</p>
+            <noscript>
+                <p class="alert alert-info">Turn on JavaScript to see the listings.</p>
+            </noscript>
+        </section>
+
+        <section class="container mb-5" id="list-your-service">
+            <div class="card p-4 p-md-5 text-center border-0 shadow-sm cta reveal">
+                <div class="card-body">
+                    <h2 class="card-title fw-bolder fs-2">List your tourism services for free</h2>
+                    <p class="card-text mt-4 fw-bold fs-5">Thrill tourism is an online platform that enables tourists to
+                        directly connect with hosts, without any commission fees.</p>
+                    <a href="#contact" class="btn btn-primary btn-lg mt-3">Publish your ad for free</a>
+                </div>
             </div>
-        </footer>
+        </section>
     </main>
+
+    <footer class="bg-white pt-5 pb-4" id="contact">
+        <div class="container d-flex flex-wrap justify-content-between gap-2">
+            <p class="mb-0">2023 <i class="bi bi-c-circle"></i> thrilltourism.com | Privacy Policy | Terms and
+                Conditions | Pricing</p>
+            <p class="text-danger mb-0">Beta version</p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="placeModal" tabindex="-1" aria-labelledby="placeModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content overflow-hidden">
+                <img src="" alt="" class="modal-img" id="placeModalImg">
+                <div class="modal-header border-0 pb-0">
+                    <div>
+                        <span class="badge text-bg-primary" id="placeModalCategory"></span>
+                        <h2 class="modal-title fs-4 fw-bold mt-2" id="placeModalTitle"></h2>
+                        <p class="text-secondary mb-0"><i class="bi bi-geo-alt"></i> <span id="placeModalLocation"></span></p>
+                    </div>
+                    <button type="button" class="btn-close align-self-start" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="placeModalText" class="mb-0"></p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-danger" id="placeModalFav"></button>
+                    <a class="btn btn-outline-secondary" id="placeModalDirections" target="_blank" rel="noopener">
+                        <i class="bi bi-box-arrow-up-right"></i> Open in Google Maps
+                    </a>
+                    <button type="button" class="btn btn-primary" id="placeModalMap">
+                        <i class="bi bi-map"></i> Show on map
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
